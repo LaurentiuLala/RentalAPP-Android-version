@@ -1,228 +1,328 @@
-RentalAPP - Android Version
+# RentalAPP — Android Car Rental Application
 
-Android application for a car rental management system, developed as a university project.
+A native Android application for managing and interacting with a car rental system.
 
-The application was created to practice Android development and to test the compatibility between an Android client and a custom REST API developed specifically for the project.
+Developed as a university project to practice Android development, REST API integration, CRUD operations, authentication, and client-server architecture.
 
-Overview
+---
 
-RentalAPP is the Android client of a car rental system. The application communicates with a backend server through a REST API and allows users to interact with the car rental platform from an Android device.
+## About the Project
 
-The project focuses on:
+**RentalAPP** is a native Android application that acts as a mobile client for a custom REST API developed separately using Spring Boot.
 
-* Android application development
-* REST API communication
-* CRUD operations
-* User authentication
-* Car and location management
-* Layered application architecture
-* Client-server communication
+The application allows users to interact with a car rental system through a mobile interface, while the backend handles business logic, authentication, database operations, and data management.
 
-The Android application communicates with an external Spring Boot REST API. Data is exchanged between the application and the server using HTTP requests.
+The main purpose of the project was to gain practical experience with Android development and communication between a mobile application and a backend service.
 
-Features
+---
 
-User Features
+## Features
 
-* User authentication
+### Authentication
+
 * User registration
-* Login
-* Browse available cars
+* User login
+* Authentication handling
+* Local secure storage for authentication-related data
+
+### Car Management
+
+* View available cars
 * View car information
-* Interact with the rental system
-
-Admin Features
-
-* Admin dashboard
-* Manage cars
-* Add new cars
-* Update existing cars
+* Add cars
+* Edit cars
 * Delete cars
-* Manage rental locations
+* Manage car availability
+
+### Location Management
+
+* View rental locations
 * Add locations
-* Update locations
+* Edit locations
 * Delete locations
-* Manage users
 
-API Communication
+### Administration
 
-The application uses a custom REST API for communication with the backend.
+Administrators can manage:
 
-The Android client handles:
+* Cars
+* Locations
+* Users
+* Rental-related information
 
-* GET requests for retrieving data
-* POST requests for creating data
-* PUT requests for updating data
-* DELETE requests for removing data
-* JSON serialization and deserialization
+### REST API Integration
 
-Architecture
+The Android application communicates with a custom REST API using HTTP requests.
 
-The application follows a layered architecture, separating different responsibilities of the application.
+The application uses:
 
-A simplified structure is:
+* Retrofit for API communication
+* GSON for JSON serialization and deserialization
+* OkHttp for HTTP networking and logging
+* Glide for image loading
 
-UI / Activities
-      |
-      v
-Application Logic
-      |
-      v
-API / Repository Layer
-      |
-      v
-REST API
-      |
-      v
-Spring Boot Backend
+---
 
-This separation makes the application easier to maintain and allows individual components to be modified without affecting the entire application.
+## Architecture
 
-Technologies
+The application follows a layered approach that separates the user interface, application logic, API communication, and backend.
 
-Android
+```text
++-----------------------------+
+|           UI Layer          |
+|      Activities / Views     |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|      Application Logic      |
+|     API calls / Adapters    |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|        API Layer            |
+|      Retrofit / OkHttp      |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|       Spring Boot API       |
+|    Backend / Business Logic |
++--------------+--------------+
+               |
+               v
++-----------------------------+
+|          Database           |
++-----------------------------+
+```
 
-* Java
-* Android SDK
-* Android Studio
-* XML layouts
-* RecyclerView
-* Intent-based navigation
-* Material Design components
+The Android application does not communicate directly with the database. All data operations are handled through the REST API.
 
-Networking
+---
 
-* Retrofit
-* GSON
-* REST API
-* JSON
+## Technologies
 
-Backend
+| Technology              | Purpose                                |
+| ----------------------- | -------------------------------------- |
+| Java                    | Main programming language              |
+| Android SDK             | Mobile application development         |
+| AndroidX                | Android application components         |
+| Material Components     | User interface components              |
+| Retrofit                | REST API communication                 |
+| GSON                    | JSON serialization and deserialization |
+| OkHttp                  | HTTP networking and logging            |
+| Glide                   | Image loading                          |
+| Android Security Crypto | Secure local data handling             |
+| Gradle Kotlin DSL       | Build configuration                    |
+| Spring Boot             | Backend REST API                       |
 
-* Java
-* Spring Boot
-* REST API
+The Android module currently uses compile SDK 36, target SDK 36, minimum SDK 24, and Java 11 compatibility.
 
-Build System
+---
 
-* Gradle
-* Kotlin DSL (build.gradle.kts)
+## Backend
 
-The project repository contains the Android application module together with the Gradle configuration required to build the project. (GitHub)
+The Android application communicates with a custom Spring Boot REST API developed specifically for the project.
 
-Project Structure
+The backend is responsible for:
 
-The main Android application is located inside the app module.
+* User management
+* Authentication
+* Car management
+* Location management
+* Rental operations
+* Business logic
+* Database communication
 
+The general architecture is:
+
+```text
+Android Application
+        |
+        | HTTP / REST
+        v
+Spring Boot REST API
+        |
+        | JPA / Hibernate
+        v
+     Database
+```
+
+This separation allows the Android application and backend to function as independent components.
+
+---
+
+## Project Structure
+
+```text
 RentalAPP-Android-version/
-│
-├── app/
-│   └── src/
-│       └── main/
-│           ├── java/
-│           ├── res/
-│           └── AndroidManifest.xml
-│
-├── gradle/
-├── build.gradle.kts
-├── settings.gradle.kts
-├── gradle.properties
-├── gradlew
-├── gradlew.bat
-└── README.md
+|
++-- app/
+|   +-- src/
+|       +-- main/
+|           +-- java/
+|           +-- res/
+|
++-- gradle/
+|
++-- build.gradle.kts
++-- settings.gradle.kts
++-- gradle.properties
++-- gradlew
++-- gradlew.bat
+|
++-- raport_tehnic.txt
++-- README.md
+```
 
-Getting Started
+---
 
-Prerequisites
+## Getting Started
+
+### Requirements
 
 Before running the project, make sure you have:
 
 * Android Studio
 * Android SDK
-* JDK
+* JDK 11 or compatible Java environment
 * An Android emulator or physical Android device
-* Access to the backend REST API
+* The corresponding Spring Boot REST API running
 
-Installation
+### Clone the Repository
 
-Clone the repository:
-
+```bash
 git clone https://github.com/LaurentiuLala/RentalAPP-Android-version.git
+```
 
-Open the project in Android Studio.
+Open the project in Android Studio and allow Gradle to synchronize.
 
-Allow Android Studio to synchronize the Gradle files and download the required dependencies.
+### Run the Application
 
-Make sure the backend REST API is running and that the API base URL used by the Android application points to the correct server.
+1. Open the project in Android Studio.
+2. Allow Gradle synchronization to complete.
+3. Start an Android emulator or connect a physical Android device.
+4. Make sure the backend API is running and accessible.
+5. Check the API base URL used by the application.
+6. Run the `app` configuration.
 
-After the project finishes syncing, run the application using an Android emulator or a connected Android device.
+If the backend is running locally, the API address may need to be adjusted depending on whether the application is running on an emulator or a physical device.
 
-Backend
+---
 
-This application requires a backend REST API to provide and manage the rental data.
+## Application Flow
 
-The backend is developed using Spring Boot and exposes endpoints used by the Android application for authentication, cars, locations and other rental-related operations.
+A typical request follows this process:
 
-The Android application was specifically developed to communicate with this custom API.
-
-Data Flow
-
-A typical request follows this flow:
-
+```text
 User
- │
- ▼
-Android Activity
- │
- ▼
-Repository / API Layer
- │
- ▼
+ |
+ v
+Android UI
+ |
+ v
 Retrofit
- │
- ▼
-REST API
- │
- ▼
-Spring Boot
- │
- ▼
+ |
+ v
+HTTP Request
+ |
+ v
+Spring Boot REST API
+ |
+ v
+Business Logic
+ |
+ v
 Database
+ |
+ v
+HTTP Response
+ |
+ v
+Android Application
+ |
+ v
+Updated UI
+```
 
-The response is then converted from JSON into Java objects using GSON and displayed by the Android application.
+---
 
-CRUD Operations
+## Project Goals
 
-The application implements CRUD functionality for the administration system.
+The main goals of the project were:
 
-Operation	HTTP Method	Purpose
-Create	POST	Add a new resource
-Read	GET	Retrieve resources
-Update	PUT	Modify an existing resource
-Delete	DELETE	Remove a resource
+* Learn native Android development using Java
+* Understand Android application architecture
+* Learn how to consume REST APIs
+* Implement CRUD operations
+* Understand client-server communication
+* Integrate an Android application with a custom backend
+* Implement authentication
+* Work with JSON data
+* Practice networking in Android
+* Gain experience with a multi-layer application
 
-These operations are primarily used for managing cars and rental locations.
+---
 
-Project Purpose
+## What I Learned
 
-This project was developed as part of my university studies.
+This project provided practical experience with:
 
-The main goals were:
+* Android Activities
+* XML layouts
+* Android navigation
+* REST APIs
+* Retrofit
+* GSON
+* HTTP requests
+* CRUD operations
+* Authentication
+* Local data storage
+* Image loading
+* Client-server architecture
+* API integration
+* Android project organization
 
-1. Learn Android application development.
-2. Practice Java-based Android development.
-3. Understand communication between a mobile application and a REST API.
-4. Learn how Retrofit can be used for HTTP communication.
-5. Practice JSON serialization and deserialization.
-6. Implement CRUD operations in a mobile application.
-7. Understand layered application architecture.
-8. Test a custom backend API using an Android client.
+---
 
-The project also served as a practical exercise for understanding how an existing web/backend system can be extended with a dedicated Android client.
+## Future Improvements
 
-Related Documentation
+Possible improvements for future versions include:
 
-The repository also contains a technical report describing the application and comparing different implementations of the Android client, including the manually developed version and AI-assisted versions.
+* MVVM architecture
+* Dedicated Repository layer
+* Improved separation of application responsibilities
+* Material Design 3
+* RecyclerView-based interfaces
+* Improved error handling
+* Loading states and progress indicators
+* Vehicle search and filtering
+* Improved rental booking workflow
+* Automated unit and UI testing
+* Dependency injection
+* Offline data caching
 
-University project focused on Android development and REST API integration.
+---
 
+## Technical Documentation
+
+Additional technical information is available in:
+
+[`raport_tehnic.txt`](./raport_tehnic.txt)
+
+The report contains additional information about the project architecture, implementation, functionality, and development process.
+
+---
+
+## Author
+
+**Laurentiu Lala**
+
+University project focused on Android development, REST API integration, and car rental management.
+
+---
+
+## License
+
+This project was developed for educational purposes.
